@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="blue-grey">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>The Foliage user interface &#8212; Foliage</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=e7352e39" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css?v=79c92029" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=4f206608" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <link rel="icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Nitty-gritty details" href="nitty.html" />
+    <link rel="prev" title="Starting Foliage" href="first-time-usage.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=deep-orange data-md-color-accent=teal>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#foliage-interface" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="Foliage"
+           class="md-header-nav__button md-logo">
+          
+            &nbsp;
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">Foliage</span>
+          <span class="md-header-nav__topic"> The Foliage user interface </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" action="search.html" method="get" name="search">
+      <input type="text" class="md-search__input" name="q" placeholder="Search"
+             autocapitalize="off" autocomplete="off" spellcheck="false"
+             data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/caltechlibrary/foliage/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    foliage
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">Home</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="Foliage" class="md-nav__button md-logo">
+      
+        <img src="_static/" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="index.html"
+       title="Foliage">Foliage</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/caltechlibrary/foliage/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    foliage
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html" class="md-nav__link">Installation</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html#preliminary-requirements" class="md-nav__link">Preliminary requirements</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html#installation-instructions" class="md-nav__link">Installation instructions</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="first-time-usage.html" class="md-nav__link">Starting Foliage</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="first-time-usage.html#starting-and-quitting" class="md-nav__link">Starting and quitting</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="first-time-usage.html#first-time-permissions" class="md-nav__link">First-time permissions</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="first-time-usage.html#folio-authentication" class="md-nav__link">FOLIO authentication</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="first-time-usage.html#second-time-permissions" class="md-nav__link">Second-time permissions</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> The Foliage user interface </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">The Foliage user interface</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+  </ul>
+</nav>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#tab-look-up-records" class="md-nav__link">Tab: look up records</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#tab-change-records" class="md-nav__link">Tab: change records</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#tab-delete-records" class="md-nav__link">Tab: delete records</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#tab-clean-records" class="md-nav__link">Tab: clean records</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#tab-list-uuids" class="md-nav__link">Tab: list UUIDs</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#tab-other" class="md-nav__link">Tab: other</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="nitty.html" class="md-nav__link">Nitty-gritty details</a>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="nitty.html#looking-up-records" class="md-nav__link">Looking up records</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="nitty.html#changing-records" class="md-nav__link">Changing records</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="glossary.html" class="md-nav__link">Glossary</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="colophon.html" class="md-nav__link">Colophon</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+  <ul class="md-nav__list" data-md-scrollfix="">
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="the-foliage-user-interface">
+<h1 id="foliage-interface--page-root">The Foliage user interface<a class="headerlink" href="#foliage-interface--page-root" title="Permalink to this heading">¶</a></h1>
+<p>When you start Foliage normally (or after it shows the one-time credentials screen, described below), your browser should present a page that looks like the one below:</p>
+<figure>
+<img src="_static/media/main-page.png"/>
+</figure>
+<p>The interface is organized into five areas of functionality accessed by clicking on the row of tabs near the top: (1) <em>Look up records</em> (the first one shown when Foliage starts up), (2) <em>Change records</em>, (3) <em>Delete records</em>, (4) <em>Clean Records</em>, (5) <em>List UUIDs</em>, and (6) <em>Other</em>. They are described in detail below.</p>
+<section id="tab-look-up-records">
+<h2 id="tab-look-up-records">Tab: look up records<a class="headerlink" href="#tab-look-up-records" title="Permalink to this heading">¶</a></h2>
+<p>The first tab – the one visible when you start up Foliage – provides a facility for looking up any item, instance, holdings, loan, or user record using any of the common identifiers by which the records can be addressed.  Depending on the type of record, this may be a barcode, a unique id (i.e., a string that looks like <code class="docutils literal notranslate"><span class="pre">f6fac97a-ee31-4300-aef6-b63be4ea23a2</span></code>), an “hrid” (human readable identifier), or an accession number. You can either type or paste the numbers into the text box on the page, or use the <span class="button color-outline-primary">Upload</span> button to upload a text file containing such identifiers. Identifiers can be separated by newlines, spaces, commas, colons, or semicolons; Foliage will also strip any quote characters from the input. Lastly, identifiers can be mixed: you can enter barcodes for some items and hrid’s for others all at once, and Foliage won’t care.</p>
+<p>The screenshot below shows an example of looking up an item by its barcode:</p>
+<figure>
+<img src="_static/media/lookup-barcode.png"/>
+</figure>
+<section id="options-for-controlling-lookups">
+<h3 id="options-for-controlling-lookups">Options for controlling lookups<a class="headerlink" href="#options-for-controlling-lookups" title="Permalink to this heading">¶</a></h3>
+<p>Under the input text box, there are four control elements that influence what Foliage does.</p>
+<ul class="simple">
+<li><p><em>Kind of record to retrieve</em>: The five radio boxes allow you to select the kind of record to retrieve based on the identifiers given. One of Foliage’s powerful features is that it lets you use one kind of record identifier to search for <em>other</em> kinds of records. For example, you can supply item barcodes and select <em>Instance</em> as the type of record to retrieve, and Foliage will retrieve the instance records for the given identifiers. Or you can select <em>Loan</em> as the type to retrieve and find out if there are any loans out for the given items. To take another example, you could provide a user identifier, select <em>Item</em> as the kind of record to retrieve, and get back a list of the items on loan to the user.</p></li>
+<li><p><em>Search open loans only</em>: When searching for loans, Foliage can be told to consider only open loans, or all loans. You can use this checkbox to choose what Foliage should do. Use this option with caution: unchecking this will cause Foliage to retrieve any loans, including closed loans from the history of loans for every item in the input, which could potentially be a long list and take a very long time to retrieve.</p></li>
+<li><p><em>Output format</em>: Foliage can present the output either in a summary format or in the raw data format retrieved from the FOLIO server. The summary format is a custom tabular format that shows a subset of the fields from each record. Different record kinds are presented with different fields in the output.</p></li>
+<li><p><em>Use inventory <a class="reference internal" href="#glossary.html#API"><span class="xref myst">API</span></a> for items and instances</em>: Items and instances in FOLIO come in two slightly different record formats, depending on which one of two FOLIO APIs are used to retrieve them. The so-called “inventory” API returns results that have slightly more data compared to the so-called “storage” API. The additional fields are computed by FOLIO and are not actually stored with the records. The additional information can be useful when exploring items and instances, but because the inventory API does not represent what is actually stored by FOLIO, it is better to deselect this option and make Foliage use the storage API if you are working with records for the purpose of changing field values or performing other actions.</p></li>
+</ul>
+</section>
+<section id="saving-the-results">
+<h3 id="saving-the-results">Saving the results<a class="headerlink" href="#saving-the-results" title="Permalink to this heading">¶</a></h3>
+<p>After performing the search and displaying the results, Foliage includes a button named <span class="button color-outline-primary">Export</span> at the bottom of the page. This allows you to export a list of all the records you looked up as a file in <a class="reference internal" href="#glossary.html#CSV"><span class="xref myst">CSV</span></a> or <a class="reference internal" href="#glossary.html#JSON"><span class="xref myst">JSON</span></a> format.</p>
+</section>
+</section>
+<section id="tab-change-records">
+<h2 id="tab-change-records">Tab: change records<a class="headerlink" href="#tab-change-records" title="Permalink to this heading">¶</a></h2>
+<p>The <em>Change records</em> tab provides functionality for changing the values of fields in records. You can use it to add, change, or delete values. It currently works only for item and holdings records, and only for the <em>Temporary location</em>, <em>Permanent location</em>, and <em>Loan type</em> fields, though this may be expanded in the future.</p>
+<figure>
+<img src="_static/media/change-tab.png"/>
+</figure>
+<p>The bottom left-hand half of the <em>Change records</em> tab includes an input box where you can type or copy-paste identifiers of item records and/or holdings records. “Identifiers” here can be barcodes, unique id’s (i.e., strings that looks like <code class="docutils literal notranslate"><span class="pre">f6fac97a-ee31-4300-aef6-b63be4ea23a2</span></code>), or hrid’s (human readable identifiers). Alternatively, instead of typing or copy-pasting identifiers, you can upload a file of identifiers by clicking on the <span class="button color-outline-primary">Upload</span> button.</p>
+<p>The bottom right-hand half of the <em>Change records</em> tab features a set of <span class="button color-primary">Select</span> buttons and radio buttons. The first button allows you to select the field to be changed. Clicking on the button will pop up a dialog where you can select from a list of fields that Foliage knows how to change:</p>
+<figure>
+<img src="_static/media/change-tab-select-field.png"/>
+</figure>
+<p>Once you select a field and click <span class="button color-primary">Submit</span> in the dialog, the <em>Change records</em> tab will show the selected field to the right of the button you just clicked:</p>
+<figure>
+<img src="_static/media/change-tab-selected-field.png"/>
+</figure>
+<p>Next, choose the action to be performed on the records. The following are the possible actions and their meanings:</p>
+<ul class="simple">
+<li><p><em>Add value</em>: this only acts when an item record does not have a value for the selected field. If you select <em>Add value</em>, only the new field value selector is enabled; the selector for the current field value is grayed out and disabled. When the operation is actually performed, Foliage will check each record to see if the field is present at all (with any value); if the field is missing, then Foliage will add it with the given value, but if a record has a value for the given, then Foliage will skip that record.</p></li>
+<li><p><em>Change value</em>: this operation needs both a current field value and a new field value, so both selectors are enabled when you select <em>Change value</em> as the action. When the operation is performed, Foliage will check each record to see if it has the specified current field value. If it does, the record will be changed to have the new field value, but if the record doesn’t (either because the value it has is different or the record doesn’t have the field at all) then Foliage will skip that record.</p></li>
+<li><p><em>Delete value</em>: this operation needs a current field value but not a new field value, so when the action is <em>Delete value</em>, the new field value selector is disabled. When the operation is performed, Foliage will check if each record has the given value for the field. If it does, Foliage will delete the field value; if a record doesn’t, Foliage wil skip that record.</p></li>
+</ul>
+<p>Depending on the action chosen, <span class="button color-primary">Select</span> buttons may be enabled for either or both the current field value and/or the new field value. When clicked, Foliage will pop up a dialog with a long list of possible field values. Here is an example:</p>
+<figure>
+<img src="_static/media/change-tab-value-selector.png"/>
+</figure>
+<p>Once the required values have been selected for the relevant fields, click the <span class="button color-primary">Change records</span> button to proceed with the changes.</p>
+<section id="field-matching-and-change-operations">
+<h3 id="field-matching-and-change-operations">Field matching and change operations<a class="headerlink" href="#field-matching-and-change-operations" title="Permalink to this heading">¶</a></h3>
+<p>The selectors in the <em>Change records</em> interface are designed to ask only for the values actually needed for a given operation. The values requested are required. For example, if you select <em>Delete value</em> as the action, the Foliage interface will require you to select a current field value and will not allow you to leave it blank , and it will not let you specify a new field value. Foliage is also strict about matching field values when it performs the changes. For example, it will not change a record’s field value to a new value unless it matches the value expected to be the current value.</p>
+<p>These strict requirements are mainly motivated by the goal of reducing the chance of accidental unintended changes when long lists of records are involved, but they also have some benefits for how users can perform changes. For example, it’s safe to give Foliage a list of data that may or may not have specific field values, because it will skip those that don’t match. For example, suppose books from two different locations A and B are being moved to location C. You can load a list of the book barcodes, select A as the current location field value and C as the new field value, click the <span class="button color-primary">Change records</span> button to make the changes, then (without doing anything else) change the selection of the current field value to B in the user interface, and click <span class="button color-primary">Change records</span> button a second time. Since Foliage will only change matching records, the first run will change only those records that have current location A and the second run will change only those records that have current location B. Together, the two runs will have performed movers A → C and B → C.</p>
+</section>
+<section id="saving-a-log-of-the-results">
+<h3 id="saving-a-log-of-the-results">Saving a log of the results<a class="headerlink" href="#saving-a-log-of-the-results" title="Permalink to this heading">¶</a></h3>
+<p>After performing the changes and printing a summary of the results, Foliage will include a button named <span class="button color-outline-primary">Export</span> at the bottom. This allows you to export a list of all the changes as a CSV file.</p>
+</section>
+</section>
+<section id="tab-delete-records">
+<h2 id="tab-delete-records">Tab: delete records<a class="headerlink" href="#tab-delete-records" title="Permalink to this heading">¶</a></h2>
+<p>You may already have guessed what the <em>Delete records</em> tab in Foliage allows you to do. The current version of Foliage allows the deletion of item, holdings, and instance records. Foliage is smart enough to perform deletions recursively if necessary: deleting a holdings record deletes all the associated items, and deleting an instance record deletes all the associated holdings and items.</p>
+<figure>
+<img src="_static/media/delete-tab.png"/>
+</figure>
+<p>The tab layout is simple. It includes an input box where you can type or copy-paste identifiers of item records (barcodes, unique id’s, or hrid’s), an <span class="button color-outline-primary">Upload</span> button that lets you upload a file of identifiers, a <span class="button color-primary">Delete records</span> button to perform the deletions, and finally, the usual <span class="button color-outline-primary">Clear</span> button to clear past output.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As noted above, deleting a holdings record <strong>will delete all the item records too</strong>, for items associated with the holdings record; likewise, deleting an instance record <strong>will delete all its holdings and items</strong>. Use the Delete facility carefully!</p>
+</div>
+</section>
+<section id="tab-clean-records">
+<h2 id="tab-clean-records">Tab: clean records<a class="headerlink" href="#tab-clean-records" title="Permalink to this heading">¶</a></h2>
+<p>At Caltech Library, the following situation sometimes occurs. A patron may have had loans on items, and at some point one of those items may be deemed lost. Normally, Library staff need to delete the loans and delete the item records from FOLIO. However, if the regular order of events is not followed and <em>only</em> the item record is deleted, then patron’s record in FOLIO will have an associated loan record that refers to a nonexistent item. At Caltech Library, we call these <em>phantom loans</em> because they are ghosts that haunt FOLIO and cause problems.</p>
+<p>The <em>Clean Records</em> tab in Foliage is designed to search for loans based on user identifiers, and delete any loan records for items that cannot be found in FOLIO. Loans for items that do exist are left untouched; only loans on nonexistent items are affected.</p>
+<figure>
+<img src="_static/media/clean-records-tab.png"/>
+</figure>
+<p>To use <em>Clean Records</em>, input or upload a list of user identifiers (either user barcodes or user id’s), and click on the <span class="button color-primary">Delete phantom loans</span> button.</p>
+</section>
+<section id="tab-list-uuids">
+<h2 id="tab-list-uuids">Tab: list UUIDs<a class="headerlink" href="#tab-list-uuids" title="Permalink to this heading">¶</a></h2>
+<p>Many data fields in FOLIO records take values drawn from controlled vocabularies. These vocabularies consist of unique identifiers (<a class="reference internal" href="#glossary.html#UUID"><span class="xref myst">UUIDs</span></a> – strings that look like <code class="docutils literal notranslate"><span class="pre">f6fac97a-ee31-4300-aef6-b63be4ea23a2</span></code>). Each different type of field in a record can take on values from a specific list of values.</p>
+<p>Finding out the possible values is not easy to do directly in FOLIO. To help compensate, Foliage offers a simple way to list the possible values of various identifier types. This can be done in the <em>List UUIDs</em> tab.</p>
+<figure>
+<img src="_static/media/list-uuids-tab.png"/>
+</figure>
+<p>The operation of the <em>List UUIDs</em> tab is simple: select a type of <a class="reference internal" href="#glossary.html#UUID"><span class="xref myst">UUIDs</span></a> from the pop-up menu, and click the <span class="button color-primary">Get list</span> button to make Foliage retrieve the list of identifiers from FOLIO. Shown below is an example of doing this for the “Holdings type” list.</p>
+<figure>
+<img src="_static/media/list-uuids-example.png"/>
+</figure>
+<p>The identifiers can be clicked to get the full data for a given value. The complete list can also be exported by clicking the  <span class="button color-outline-primary">Export</span> button.</p>
+</section>
+<section id="tab-other">
+<h2 id="tab-other">Tab: other<a class="headerlink" href="#tab-other" title="Permalink to this heading">¶</a></h2>
+<p>The <em>Other</em> tab has already been mentioned above in the section on <a class="reference internal" href="#authentication"><span class="xref myst">Authentication</span></a>. On this tab, Foliage provides three buttons, shown in the screenshot below:</p>
+<figure>
+<img src="_static/media/other-tab.png"/>
+</figure>
+<ul class="simple">
+<li><p>The <span class="button color-primary">Edit credentials</span> button allows you to edit the credentials used by Foliage for interacting with the FOLIO server. This includes the user name and password for FOLIO, the URL for the FOLIO server, and the tenant id. As mentioned in the <a class="reference internal" href="#authentication"><span class="xref myst">section on authentication</span></a>, Foliage does not store your user name and password, so when you click this button to edit the credentials, those fields will be blank and you will have to enter them again.</p></li>
+<li><p>The <span class="button color-primary">Show backups</span> button opens a Windows Explorer or macOS Finder window (depending on your operating system) on the folder where Foliage writes backups of every record it changes or deletes before it makes any change to the record. The backups are organized by the unique identifier of the record in question; within each subfolder, you will find a file named after the time the backup was made and containing the raw record data in a format known as <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a>. This is a simple backup scheme meant only as a last-ditch safety measure to guard against catastrophic errors. Note: Foliage does not offer a way of restoring records from these backup files. If you need to restore a record using these backups, consult with the FOLIO experts at your institution.</p></li>
+<li><p>The <span class="button color-primary">Show log file</span> button displays a log of all the actions taken by Foliage since it was started in the current session. The information is quite detailed and probably not much use to anyone but the developers of Foliage, but they can be useful when trying to investigate program bugs and other problems.</p></li>
+</ul>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="first-time-usage.html" title="Starting Foliage"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Starting Foliage </span>
+              </div>
+            </a>
+          
+          
+            <a href="nitty.html" title="Nitty-gritty details"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Nitty-gritty details </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2022, Caltech Library.
+              
+          </div>
+            Last updated on
+              Jul 27, 2023.
+            <br/>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 7.1.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
